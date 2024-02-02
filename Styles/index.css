@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('/Images/background.jpeg');
+    background-size: cover;
+    background-position: center bottom;
+    background-color: darkcyan; /*fallback in case that the picture cant load*/
+}
+
+p{
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    margin: 2vh 2vh;
+}
+
+#main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+#mainTitle{
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 5vh;
+    font-weight: 500;
+}
+
+#logo{
+    height: 5vh;
+    margin-right: 2vh;
+}
+
+#main_content{
+    border-radius: 1vh;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: rgb(0,0,0,0.8);
+}
+
+#content_title{
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    font-size: 4vh;
+}
+
+#measurment_title{
+    margin-bottom: 1vh;
+    font-size: 3vh;
+}
+
+#measurments{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#p1{
+    margin-top: 1vh;
+    margin-bottom: 0vh;
+}
+
+label{
+    font-family: 'Kanit', sans-serif;
+    color: white;
+    margin-right: 2vh;
+    font-size: 2vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+button{
+    margin-top: 2vh;
+}
