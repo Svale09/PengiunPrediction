@@ -25,24 +25,36 @@
             <div id="measurments">
                 <p id="measurment_title">Measurments input</p>
                 <div id="inputs">
-                    <div id="island_input">
-                    
-                    </div>
-                    <div id="culmen_length_input">
-                        
-                    </div>
-                    <div id="culmen_depth_input">
-                        
-                    </div>
-                    <div id="flipper_length_input">
-                        
-                    </div>
-                    <div id="mass_input">
-                        
-                    </div>
-                    <div id="sex_input">
-                        
-                    </div>
+                    <form action="">
+                        <div>
+                            <label for="island">Island</label>
+                            <input type="text" id="island" placeholder="Enter island">
+                        </div>
+                        <div>
+                            <label for="culmen_l">Culmen lenght (mm)</label>
+                            <input type="text" id="culmen_l" placeholder="Enter length">
+                        </div>
+                        <div>
+                            <label for="culmen_d">Culmen depth (mm)</label>
+                            <input type="text" id="culmen_d" placeholder="Enter depth">
+                        </div>
+                        <div>
+                            <label for="flipper">Flipper lenght (mm)</label>
+                            <input type="text" id="flipper" placeholder="Enter flipper length">
+                        </div>
+                        <div>
+                            <label for="mass">Mass (g)</label>
+                            <input type="text" id="mass" placeholder="Enter mass">
+                        </div>
+                        <div>
+                            <label for="sex">Sex</label>
+                            <select name="sex" id="sex">
+                                <option value="MALE">Male</option>
+                                <option value="FEMALE">Female</option>
+                                <option value="NA">NA</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
