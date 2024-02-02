@@ -24,38 +24,94 @@
             </div>
             <div id="measurments">
                 <p id="measurment_title">Measurments input</p>
-                <div id="inputs">
-                    <form action="">
-                        <div>
-                            <label for="island">Island</label>
-                            <input type="text" id="island" placeholder="Enter island">
+                    <form id="myForm">
+                        <div id="options">
+                            <div>
+                                <label for="island">Island</label>
+                                <select name="island" id="island">
+                                    <option value="Biscoe">Biscoe</option>
+                                    <option value="Dream">Dream</option>
+                                    <option value="Torgersen">Torgersen</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="culmen_l">Culmen lenght (mm)</label>
+                                <input type="text" id="culmen_l" placeholder="Enter length">
+                            </div>
+                            <div>
+                                <label for="culmen_d">Culmen depth (mm)</label>
+                                <input type="text" id="culmen_d" placeholder="Enter depth">
+                            </div>
+                            <div>
+                                <label for="flipper">Flipper lenght (mm)</label>
+                                <input type="text" id="flipper" placeholder="Enter flipper length">
+                            </div>
+                            <div>
+                                <label for="mass">Mass (g)</label>
+                                <input type="text" id="mass" placeholder="Enter mass">
+                            </div>
+                            <div>
+                                <label for="sex">Sex</label>
+                                <select name="sex" id="sex">
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="NA">NA</option>
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            <label for="culmen_l">Culmen lenght (mm)</label>
-                            <input type="text" id="culmen_l" placeholder="Enter length">
-                        </div>
-                        <div>
-                            <label for="culmen_d">Culmen depth (mm)</label>
-                            <input type="text" id="culmen_d" placeholder="Enter depth">
-                        </div>
-                        <div>
-                            <label for="flipper">Flipper lenght (mm)</label>
-                            <input type="text" id="flipper" placeholder="Enter flipper length">
-                        </div>
-                        <div>
-                            <label for="mass">Mass (g)</label>
-                            <input type="text" id="mass" placeholder="Enter mass">
-                        </div>
-                        <div>
-                            <label for="sex">Sex</label>
-                            <select name="sex" id="sex">
-                                <option value="MALE">Male</option>
-                                <option value="FEMALE">Female</option>
-                                <option value="NA">NA</option>
-                            </select>
-                        </div>
+                        <button type="button" onclick="submitForm()">Submit</button>
                     </form>
-                </div>
+                    <div id="resultContainer"></div>
+                    <script>
+                        function submitForm(){
+                            var island_Val = document.getElementById('island').value;
+                            var culmen_l_Val = document.getElementById('culmen_l').value;
+                            var culmen_d_Val = document.getElementById('culmen_d').value;
+                            var flipper_Val = document.getElementById('flipper').value;
+                            var mass_Val = document.getElementById('mass').value;
+                            var sex_Val = document.getElementById('sex').value;
+
+                            var inputData = {
+                                Inputs: {
+                                    data: [
+                                        {
+                                            island: island_Val,
+                                            culmen_length_mm: culmen_l_Val,
+                                            culmen_depth_mm: culmen_d_Val,
+                                            flipper_length_mm: flipper_Val,
+                                            body_mass_g: mass_Val,
+                                            sex: sex_Val
+                                        }
+                                    ]
+                                },
+                                GlobalParameters: {
+                                    method: 'predict'
+                                }
+                             };
+                             
+                            var endpointURL = "http://523bf5a5-e167-4319-ab0a-5371a436cd30.germanywestcentral.azurecontainer.io/score";
+                            
+                            var requestOptions = {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(inputData),
+                            };
+
+                            // Make the fetch request
+                            fetch(endpointURL, requestOptions)
+                                .then(response => response.json())
+                                .then(data => {
+                                    // Display the returned data
+                                    document.getElementById('resultContainer').innerHTML = JSON.stringify(data, null, 2);
+                                })
+                                .catch(error => {
+                                    console.error('Error:', error);
+                                    // Handle errors as needed
+                                });
+                        }
+                    </script>
             </div>
         </div>
         <div id="footer">
