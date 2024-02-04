@@ -4,7 +4,7 @@
 }
 
 body{
-    background-image: url('/Images/background.jpeg');
+    background-image: url('/static/background.jpeg');
     background-size: cover;
     background-position: center bottom;
     background-color: darkcyan; /*fallback in case that the picture cant load*/
@@ -94,4 +94,11 @@ form{
 
 button{
     margin-top: 2vh;
+}
+
+#resultContainer{
+    font-family: 'Kanit', sans-serif;
+    color: white;
+    font-size: 2vh;
+    text-align: center;
 }
