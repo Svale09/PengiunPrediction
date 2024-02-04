@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pengiun Classifier</title>
-    <link rel="stylesheet" href="/Styles/index.css" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='penguin_icon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,7 +23,7 @@
   <body>
     <div id="main">
       <div id="header">
-        <img id="logo" src="/Images/penguin_icon.png" alt="icon" />
+        <img id="logo" src="/static/penguin_icon.png" alt="icon" />
         <h1 id="mainTitle">Penguin Classifier</h1>
       </div>
       <div id="main_content">
@@ -97,35 +105,27 @@
                 },
               };
 
-              var endpointURL =
-                "http://523bf5a5-e167-4319-ab0a-5371a436cd30.germanywestcentral.azurecontainer.io/score";
-
-              var requestOptions = {
+              fetch("/submit_form", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
                 },
                 body: JSON.stringify(inputData),
-              };
-
-              // Make the fetch request
-              fetch(endpointURL, requestOptions)
+              })
                 .then((response) => response.json())
                 .then((data) => {
-                  // Display the returned data
                   document.getElementById("resultContainer").innerHTML =
                     JSON.stringify(data, null, 2);
                 })
                 .catch((error) => {
-                  console.error("Error:", error);
-                  // Handle errors as needed
+                  console.error("Error: ", error);
                 });
             }
           </script>
         </div>
       </div>
       <div id="footer">
-        <p>Lorem ipsum</p>
+        <p>Made by: Filip Jakirac & Ivan Svalina</p>
       </div>
     </div>
   </body>
