@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengiun Classifier</title>
+    <link rel="icon" href="/Images/penguin_icon.png">
     <link rel="stylesheet" href="/Styles/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,28 +89,20 @@
                                     method: 'predict'
                                 }
                              };
-                             
-                            var endpointURL = "http://523bf5a5-e167-4319-ab0a-5371a436cd30.germanywestcentral.azurecontainer.io/score";
-                            
-                            var requestOptions = {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(inputData),
-                            };
 
-                            // Make the fetch request
-                            fetch(endpointURL, requestOptions)
-                                .then(response => response.json())
-                                .then(data => {
-                                    // Display the returned data
-                                    document.getElementById('resultContainer').innerHTML = JSON.stringify(data, null, 2);
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                    // Handle errors as needed
-                                });
+                            let request = crypto.randomUUID();
+                             
+                            fetch('/submit_form',{
+                                method: 'POST',
+                                body: JSON.stringify(inputData)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById('resultContainer').innerHTML = JSON.stringify(data, null, 2);
+                            })
+                            .catch(error => {
+                                console.error('Error: ', error)
+                            })
                         }
                     </script>
             </div>
